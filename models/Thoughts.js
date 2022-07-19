@@ -1,8 +1,11 @@
+// req Mongoos and Moment
 const { Schema, model, Types } = require('mongoose');
 const moment = require('moment');
 
+//ReactionsSchema
 const ReactionsSchema = new Schema(
     {
+        //custom ID
         reactionId: {
             type: Schema.Types.ObjectId,
             default: ()=> new Types.ObjectId()
@@ -28,7 +31,7 @@ const ReactionsSchema = new Schema(
         } 
         }
     );
-
+//thoughtsSchema
     const ThoughtsSchema = new Schema(
         {
         thoughtText: {
@@ -58,11 +61,11 @@ const ReactionsSchema = new Schema(
         id: false
         }
     )
-
+//total count reactions
     ThoughtsSchema.virtual('reactionCount').get(function() {
         return this.reactions.length;
     });
-
+// create  thoughts using schema
     const Thoughts = model('Thoughts', ThoughtsSchema);
 
     module.exports = Thoughts;
