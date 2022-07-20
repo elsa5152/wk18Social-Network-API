@@ -25,6 +25,7 @@ const thoughtsController = {
         Thoughts.find({})
         .populate({path: 'reactions', select: '-__v'})
         .select('-__v')
+        // .sort({_id: -1})
         .then(dbThoughtsData => res.json(dbThoughtsData))
         .catch(err => {
             console.log(err);
@@ -109,5 +110,5 @@ const thoughtsController = {
 
 };
 
-
+// Export module thought controller
 module.exports = thoughtsController;
